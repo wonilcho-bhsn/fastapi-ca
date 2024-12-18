@@ -1,2 +1,1 @@
-
-https://github.com/dextto/fastapi-ca
+repo[https://github.com/dextto/fastapi-ca]
