@@ -1,0 +1,32 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "34.64.168.43",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "dev",
+            "database": "kr-law",
+            "username": "bhsn-search",
+            "password": "HY6trCNynqghxYl1"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "34.47.69.150",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "stage",
+            "database": "kr-law",
+            "username": "bhsn-search",
+            "password": "E1xVMMZxkhRQAqs"
+        }
+    ]
+}
