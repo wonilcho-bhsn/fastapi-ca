@@ -42,3 +42,22 @@ class UserService:
         users = self.user_repo.get_users(page, items_per_page)
         return users
 
+    def update_user(
+        self,
+        user_id: str,
+        name: str | None = None,
+        password: str | None = None,
+    ):
+        user = self.user_repo.find_by_id(user_id)
+
+        if name:
+            user.name = name
+        if password:
+            user.password = self.crypto.encrypt(password)
+        user.updated_at = datetime.now()
+
+        user = self.user_repo.update(user)
+        return user
+    
+    def delete_user(self, user_id:str):
+        self.user_repo.delete(user_id)

@@ -11,6 +11,10 @@ class CreateUserBody(BaseModel):
     email: EmailStr = Field(max_length=64)
     password: str = Field(min_length=8, max_length=32)
 
+class UpdateUserBody(BaseModel):
+    name: str | None = Field(min_length=2, max_length=32, default=None)
+    password: str | None = Field(min_length=8, max_length=32, default=None)
+
 class UserResponse(BaseModel):
     id: str
     name: str
@@ -38,4 +42,17 @@ def get_users(page:int=1, items_per_page:int=10):
         "users":users,
     }
 
+@router.put("/{user_id}", status_code=201)
+def update_user(user_id:str, body: UpdateUserBody):
+    user_service = UserService()
+    user = user_service.update_user(
+        user_id=user_id,
+        name=body.name,
+        password=body.password,
+    )
+    return user
 
+@router.delete("", status_code=204)
+def delete_user(user_id:str):
+    user_service = UserService()
+    user_service.delete_user(user_id)
