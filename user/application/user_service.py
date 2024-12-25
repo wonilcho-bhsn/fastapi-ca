@@ -37,4 +37,6 @@ class UserService:
         self.user_repo.save(user)
         return user
 
+    def get_users(self) -> list[User]:
+        return self.user_repo.get_users()
 

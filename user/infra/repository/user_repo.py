@@ -29,3 +29,8 @@ class UserRepository(IUserRepository):
         if not user:
             raise HTTPException(status_code=422)
         return UserVO(**row_to_dict(user))
+    
+    def get_users(self) -> list[UserVO]:
+        with SessionLocal() as db:
+            users = db.query(User).all()
+        return [UserVO(**row_to_dict(user)) for user in users]

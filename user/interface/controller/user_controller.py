@@ -28,3 +28,12 @@ def create_user(user: CreateUserBody):
     )
     return created_user
 
+@router.get("")
+def get_users():
+    user_service = UserService()
+    users = user_service.get_users()
+    return {
+        "users":users
+    }
+
+

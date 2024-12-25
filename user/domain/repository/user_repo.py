@@ -16,3 +16,7 @@ class IUserRepository(metaclass=ABCMeta):
             User: _description_
         """
         return NotImplementedError
+    
+    @abstractmethod
+    def get_users(self) -> list[User]:
+        raise NotImplementedError
