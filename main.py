@@ -6,8 +6,15 @@ from fastapi.responses import JSONResponse
 
 from user.interface.controller.user_controller import router as user_routers
 
+# examples
+from example.ch06_02.sync_ex import router as sync_ex_router
+from example.ch06_02.async_ex import router as async_ex_router
+
+
 app = FastAPI()
 app.include_router(user_routers)
+app.include_router(sync_ex_router)
+app.include_router(async_ex_router)
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(
