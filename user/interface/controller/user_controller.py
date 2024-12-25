@@ -29,11 +29,13 @@ def create_user(user: CreateUserBody):
     return created_user
 
 @router.get("")
-def get_users():
+def get_users(page:int=1, items_per_page:int=10):
     user_service = UserService()
-    users = user_service.get_users()
+    total_count, users = user_service.get_users(page, items_per_page)
     return {
-        "users":users
+        "total_count" : total_count,
+        "page" : page,
+        "users":users,
     }
 
 

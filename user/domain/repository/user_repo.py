@@ -18,5 +18,5 @@ class IUserRepository(metaclass=ABCMeta):
         return NotImplementedError
     
     @abstractmethod
-    def get_users(self) -> list[User]:
+    def get_users(self, page:int, items_per_page: int) -> tuple[int, list[User]]:
         raise NotImplementedError
