@@ -3,6 +3,7 @@ from datetime import datetime
 from user.domain.user import User
 from user.domain.repository.user_repo import IUserRepository
 from user.infra.repository.user_repo import UserRepository
+from user.application.send_welcome_email_task import SendWelcomeEmailTask
 
 from fastapi import HTTPException
 from utils.crypto import Crypto
@@ -36,6 +37,7 @@ class UserService:
             updated_at=now,
         )
         self.user_repo.save(user)
+        #SendWelcomeEmailTask().run(user.email)
         return user
 
     def get_users(self, page:int, items_per_page:int) -> tuple[int, list[User]]:

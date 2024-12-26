@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     database_username:str
     database_password:str
     jwt_secret:str
+    celery_broker_url:str
+    celery_backend_url:str
 
 @lru_cache
 def get_settings():
